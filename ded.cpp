@@ -34,7 +34,10 @@ int BlendToCanvas (Color *back, Color *front, Color *scr, int width, int height,
 
 			__m128i fr = _mm_set1_epi32 (0);
 
-			if (froffs >= 0 && froffs < width * height - 4 && x < pos.x + width && x > pos.x)
+			if (froffs >= 0                   &&
+				froffs <= width * height - 3  &&
+				x      <= (int) pos.x + width &&
+				x      >= (int) pos.x)
 			{
 				fr = _mm_set_epi32 (*(int *)(front + froffs + 3), *(int *)(front + froffs + 2),
 									*(int *)(front + froffs + 1), *(int *)(front + froffs));
