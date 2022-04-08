@@ -7,6 +7,6 @@ run ```make```
 
 # Usage
 
-```$ ./blend.exe [background-image] [foreground-image]```
+```$ ./blend.exe [background-image].png [foreground-image].png```
 
 Background image must be bigger or equal to the Screen size, which is hardcoded as 800x600.
