@@ -215,8 +215,8 @@ int LoadImages (int *argc, const char **argv, Image *bgimg, Image *fgimg)
 
 int main (int argc, const char **argv)
 {
-	Image	bgimg = {},
-			fgimg = {};
+	Image bgimg = {},
+          fgimg = {};
 
 	int load_err = LoadImages (&argc, argv, &bgimg, &fgimg);
 	if (load_err) return load_err;
