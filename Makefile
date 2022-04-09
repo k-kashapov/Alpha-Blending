@@ -4,7 +4,7 @@ cpps = alpha.cpp
 compilerFlags = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -I include -mavx -mavx2
 
 alpha.exe: 	$(cpps)
-			g++ $(cpps) $(compilerFlags) -o alpha.exe -O1
+			g++ $(cpps) $(compilerFlags) -o alpha.exe -Ofast
 
 alpha_o2.exe: 	$(cpps)
 				g++ $(cpps) $(compilerFlags) -o alpha_o2.exe -O2

@@ -139,11 +139,11 @@ int BlendToCanvas (Color *back, Color *front, Color *scr, int width, int height,
 
 int ProcessKeyboard (Vector2 *init_pos)
 {
-	if (IsKeyDown (KEY_A)) init_pos->x -= 2;
-	if (IsKeyDown (KEY_D)) init_pos->x += 2;
+	if (IsKeyDown (KEY_A)) init_pos->x -= 10;
+	if (IsKeyDown (KEY_D)) init_pos->x += 10;
 
-	if (IsKeyDown (KEY_W)) init_pos->y -= 2;
-	if (IsKeyDown (KEY_S)) init_pos->y += 2;
+	if (IsKeyDown (KEY_W)) init_pos->y -= 10;
+	if (IsKeyDown (KEY_S)) init_pos->y += 10;
 
 	return 0;
 }
@@ -152,7 +152,7 @@ int Drawing (Image *bgimg, Image *fgimg)
 {
 	Vector2 pos = { 100, 200 };
 
-	Image flat = GenImageColor (Scr_w, Scr_h, WHITE);
+	Image flat = GenImageColor (Scr_w, Scr_h, BLUE);
 	
 	Color     *old_pixels = LoadImageColors (*bgimg);
 	Color     *new_pixels = LoadImageColors (*fgimg);
@@ -167,13 +167,15 @@ int Drawing (Image *bgimg, Image *fgimg)
 	{
 		ProcessKeyboard (&pos);
 
-		BlendToCanvas (old_pixels, new_pixels, scr, 
-					   width, height, bgimg->width, pos);
+		for (int i = 0; i < 100; i++)
+		{
+			BlendToCanvas (old_pixels, new_pixels, scr, 
+						   width, height, bgimg->width, pos);
+		}
 		
 		UpdateTexture (bgTex, scr);
 	
-		BeginDrawing();
-		ClearBackground (BLACK);	
+		BeginDrawing();	
 		
 		DrawTexture (bgTex, 0, 0, WHITE);
 
